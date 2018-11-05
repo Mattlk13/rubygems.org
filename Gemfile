@@ -4,13 +4,13 @@ source 'https://rubygems.org'
 # This can be removed once all gems depend on > 3.0
 gem 'mime-types', '~> 2.99', require: 'mime/types/columnar'
 
-gem 'rails', '~> 4.2.7'
-gem 'rails-i18n'
+gem 'rails', '~> 4.2.7', '>= 4.2.7.1'
+gem 'rails-i18n', '>= 4.0.9'
 
 gem 'autoprefixer-rails'
 gem 'aws-sdk', '~> 2.2'
-gem 'clearance'
-gem 'clearance-deprecated_password_strategies'
+gem 'clearance', '>= 1.16.0'
+gem 'clearance-deprecated_password_strategies', '>= 1.10.1'
 gem 'daemons'
 gem 'dalli'
 gem 'delayed_job'
@@ -22,10 +22,10 @@ gem 'high_voltage'
 gem 'highline'
 gem 'honeybadger'
 gem 'http_accept_language'
-gem 'jquery-rails'
+gem 'jquery-rails', '>= 4.2.2'
 gem 'mail'
 gem 'newrelic_rpm'
-gem 'paul_revere', '~> 2.0'
+gem 'paul_revere', '~> 2.0', '>= 2.0.0'
 gem 'pg'
 gem 'rack'
 gem 'rack-utf8_sanitizer'
@@ -43,11 +43,11 @@ gem 'elasticsearch-rails', '~> 0.1.7'
 gem 'elasticsearch-dsl', '~> 0.1.2'
 gem 'xml-simple'
 gem 'compact_index', '~> 0.11.0'
-gem 'sprockets-rails'
+gem 'sprockets-rails', '>= 3.2.0'
 gem 'rack-attack'
 
 # Logging
-gem 'lograge'
+gem 'lograge', '>= 0.4.1'
 gem 'logstash-event'
 
 group :development, :test do
@@ -62,7 +62,7 @@ end
 group :test do
   gem 'minitest', require: false
   gem 'capybara'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', '>= 4.7.0'
   gem 'launchy'
   gem 'rack-test', require: 'rack/test'
   gem 'mocha', require: false
