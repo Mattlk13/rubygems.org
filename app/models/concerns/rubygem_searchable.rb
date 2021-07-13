@@ -35,6 +35,7 @@ module RubygemSearchable
         source_code_uri:   versioned_links&.source_code_uri,
         bug_tracker_uri:   versioned_links&.bug_tracker_uri,
         changelog_uri:     versioned_links&.changelog_uri,
+        funding_uri:       versioned_links&.funding_uri,
         yanked:            versions.none?(&:indexed?),
         summary:           latest_version&.summary,
         description:       latest_version&.description,
@@ -43,7 +44,7 @@ module RubygemSearchable
           development: deps&.select { |r| r.rubygem && r.scope == "development" },
           runtime: deps&.select { |r| r.rubygem && r.scope == "runtime" }
         }
-      }
+      }.merge!(suggest_json)
     end
 
     settings number_of_shards: 1,
@@ -60,12 +61,17 @@ module RubygemSearchable
     mapping do
       indexes :name, type: "text", analyzer: "rubygem" do
         indexes :suggest, analyzer: "simple"
+        indexes :unanalyzed, type: "keyword", index: "true"
       end
       indexes :summary, type: "text", analyzer: "english" do
         indexes :raw, analyzer: "simple"
       end
       indexes :description, type: "text", analyzer: "english" do
         indexes :raw, analyzer: "simple"
+      end
+      instance_eval do
+        context = { name: "yanked", type: "category" }
+        @mapping[:suggest] = { type: "completion", contexts: context }
       end
       indexes :yanked, type: "boolean"
       indexes :downloads, type: "integer"
@@ -84,6 +90,20 @@ module RubygemSearchable
         .includes(:latest_version, :gem_download)
         .references(:versions)
         .by_downloads
+    end
+
+    private
+
+    def suggest_json
+      {
+        suggest: {
+          input: name,
+          weight: downloads,
+          contexts: {
+            yanked: versions.none?(&:indexed?)
+          }
+        }
+      }
     end
   end
 end

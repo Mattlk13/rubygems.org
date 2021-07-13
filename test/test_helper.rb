@@ -1,9 +1,15 @@
+require "simplecov"
+SimpleCov.start "rails" do
+  add_filter "lib/tasks"
+end
+
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path("../config/environment", __dir__)
 
 require "rails/test_help"
-require "mocha/mini_test"
+require "mocha/minitest"
 require "capybara/rails"
+require "capybara/minitest"
 require "clearance/test_unit"
 require "shoulda"
 require "helpers/gem_helpers"
@@ -23,6 +29,7 @@ class ActiveSupport::TestCase
   setup do
     I18n.locale = :en
     Rails.cache.clear
+    Rack::Attack.cache.store.clear
 
     # Don't connect to the Pwned Passwords API in tests
     Pwned.stubs(:pwned?).returns(false)
@@ -37,7 +44,7 @@ class ActiveSupport::TestCase
   end
 
   def assert_changed(object, *attributes)
-    original_attributes = attributes.map { |a| [a, object.send(a)] }.to_h
+    original_attributes = attributes.index_with { |a| object.send(a) }
     yield if block_given?
     reloaded_object = object.reload
     attributes.each do |attribute|
@@ -47,12 +54,19 @@ class ActiveSupport::TestCase
         "Expected #{object.class} #{attribute} to change but still #{latest}"
     end
   end
+
+  def headless_chrome_driver
+    Capybara.current_driver = :selenium_chrome_headless
+    Capybara.default_max_wait_time = 2
+    Selenium::WebDriver.logger.level = :error
+  end
 end
 
 class ActionDispatch::IntegrationTest
   setup { host! Gemcutter::HOST }
 end
 Capybara.app_host = "#{Gemcutter::PROTOCOL}://#{Gemcutter::HOST}"
+Capybara.always_include_port = true
 
 class SystemTest < ActionDispatch::IntegrationTest
   include Capybara::DSL

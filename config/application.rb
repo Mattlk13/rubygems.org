@@ -23,7 +23,7 @@ Bundler.require(*Rails.groups)
 module Gemcutter
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.2
+    config.load_defaults 6.0
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
@@ -53,6 +53,7 @@ module Gemcutter
     config.plugins = [:dynamic_form]
 
     config.eager_load_paths << Rails.root.join("lib")
+    config.toxic_domains_filepath = Rails.root.join("vendor", "toxic_domains_whole.txt")
   end
 
   def self.config
@@ -68,10 +69,13 @@ module Gemcutter
   NEWS_PER_PAGE = 10
   MAX_PAGES = 1000
   MFA_KEY_EXPIRY = 30.minutes
+  OWNERSHIP_TOKEN_EXPIRES_AFTER = 48.hours
   POPULAR_DAYS_LIMIT = 70.days
   PROTOCOL = config["protocol"]
   REMEMBER_FOR = 2.weeks
   SEARCH_MAX_PAGES = 100 # Limit max page as ES result window is upper bounded by 10_000 records
   STATS_MAX_PAGES = 10
   STATS_PER_PAGE = 10
+  MAX_FIELD_LENGTH = 255
+  PASSWORD_VERIFICATION_EXPIRY = 10.minutes
 end

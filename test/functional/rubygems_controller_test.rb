@@ -182,7 +182,7 @@ class RubygemsControllerTest < ActionController::TestCase
       get :show, params: { id: @rubygem.to_param }
       assert page.has_content?("Licenses")
 
-      @latest_version.update(licenses: ["MIT", "GPL-2"])
+      @latest_version.update(licenses: %w[MIT GPL-2])
       get :show, params: { id: @rubygem.to_param }
       assert page.has_content?("Licenses")
     end
@@ -256,7 +256,7 @@ class RubygemsControllerTest < ActionController::TestCase
       setup do
         @rubygem.update(created_at: 30.days.ago, updated_at: 99.days.ago)
         @owner = create(:user)
-        @rubygem.owners << @owner
+        create(:ownership, user: @owner, rubygem: @rubygem)
         get :show, params: { id: @rubygem.to_param }
       end
 

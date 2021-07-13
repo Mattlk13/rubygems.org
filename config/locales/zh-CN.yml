@@ -7,17 +7,18 @@ zh-CN:
   footer_sponsors_html:
   footer_join_rt_html:
   form_disable_with: 请稍后...
-  help_url: http://help.rubygems.org
   invalid_page:
   locale_name: 简体中文
   none: 无
   not_found: 未找到
+  api_key_forbidden:
   please_sign_up: 拒绝访问。请先在 https://rubygems.org 上注册一个账号。
   please_sign_in:
-  otp_incorrect:
-  otp_missing:
+  otp_incorrect: 你的 OTP 码 不正确。请检查后再试一次。
+  otp_missing: 你已启用多重要素验证，但是没有输入 OTP 码。请输入后再试一次。
   sign_in: 登录
   sign_up: 注册
+  dependency_list:
   multifactor_authentication: 多重验证
   subtitle: Ruby 社区 Gem 托管
   this_rubygem_could_not_be_found: 未找到这个 RubyGem
@@ -26,6 +27,7 @@ zh-CN:
   update: 更新
   try_again: 请重试
   advanced_search: 高级搜索
+  authenticate:
   activerecord:
     attributes:
       linkset:
@@ -35,6 +37,7 @@ zh-CN:
         docs: 文档 URL
         mail: 邮件列表 URL
         wiki: Wiki URL
+        funding:
       session:
         password: 密码
         who: Email / 账号
@@ -46,6 +49,42 @@ zh-CN:
     errors:
       messages:
         unpwn:
+        blocked:
+    models:
+      user:
+  api_keys:
+    create:
+      success:
+    destroy:
+      success:
+    index:
+      api_keys:
+      name:
+      scopes:
+      age:
+      last_access:
+      action:
+      delete:
+      confirm:
+      confirm_all:
+      new_key:
+      index_rubygems:
+      push_rubygem:
+      yank_rubygem:
+      add_owner:
+      remove_owner:
+      access_webhooks:
+      show_dashboard:
+      reset:
+      save_key:
+    new:
+      new_api_key:
+    reset:
+      success:
+    update:
+      success:
+    edit:
+      edit_api_key:
   clearance_mailer:
     change_password:
       title:
@@ -105,6 +144,7 @@ zh-CN:
       header:
         dashboard: 控制台
         edit_profile:
+        settings:
         search_gem_html: 搜索 Gems&hellip;
         sign_in: 登录
         sign_out: 退出
@@ -112,6 +152,7 @@ zh-CN:
   mailer:
     confirm_your_email:
     confirmation_subject:
+    link_expiration_explanation_html:
     email_confirmation:
       title:
       subtitle:
@@ -121,7 +162,6 @@ zh-CN:
       title:
       subtitle:
       visit_link_instructions:
-      link_expiration_explanation:
     deletion_complete:
       title:
       subtitle:
@@ -136,9 +176,40 @@ zh-CN:
       subject:
       title:
       subtitle:
+      'on':
+      off_html:
     gem_pushed:
       subject:
       title:
+    gem_yanked:
+      subject:
+      title:
+    reset_api_key:
+      subject:
+      title:
+      subtitle:
+    email_reset_update:
+      subject:
+      title:
+    ownership_confirmation:
+      subject:
+      title:
+      subtitle:
+      body_text:
+      body_html:
+      link_expiration_explanation_html:
+    owner_added:
+      subject_self:
+      subject_others:
+      title:
+      subtitle:
+      body_self_html:
+      body_others_html:
+    owner_removed:
+      subject:
+      title:
+      subtitle:
+      body_html:
   news:
     show:
       title: 全部新发布 Gems
@@ -177,51 +248,49 @@ zh-CN:
       submit: 重置密码
       title: 修改密码
       will_email_notice: 我们将会通过 Email 发送修改密码的链接给你。
-    otp_prompt:
-      authenticate:
   multifactor_auths:
-    incorrect_otp:
-    otp_code:
-    require_mfa_disabled:
-    require_mfa_enabled:
+    recovery_code_html:
+    incorrect_otp: 你的 OTP 码 不正确。
+    otp_code: OTP 码
+    require_mfa_disabled: 你的多重要素验证已启用，请先停用。
+    require_mfa_enabled: 你的多重要素验证已停用，请先启用。
     new:
-      title:
-      scan_prompt:
-      otp_prompt:
-      confirm:
-      enable:
-      account:
-      key:
-      time_based:
+      title: 启用多重要素验证
+      scan_prompt: 请用你的验证装置扫描 QR-code。如果你没办法扫描，手动输入下面的资料。
+      otp_prompt: 输入验证装置上的数字来继续。
+      confirm: 我已把复原码收在安全的地方。
+      enable: 启用
+      account: "帐号: %{account}"
+      key: "金钥: %{key}"
+      time_based: "基于时间的: 是"
     create:
-      qrcode_expired:
-      success:
+      qrcode_expired: 二维码和密钥已过期。请再重新注册装置。
+      success: 你已成功启用多重要素验证。
     recovery:
-      continue:
-      title:
-      note:
+      continue: 继续
+      title: 复原码
+      copy:
+      saved:
+      note_html:
     destroy:
-      success:
+      success: 你已成功停用多重要素验证。
     update:
-      success:
+      success: 你已成功修改多重验证等级。
   notifiers:
     update:
       success:
     show:
       info:
-      on:
-      off:
+      'on':
+      'off':
       recommended:
       title:
       update:
-  profiles:
+      push_heading:
+      owner_heading:
+  settings:
     edit:
-      change_avatar:
-      email_awaiting_confirmation: 请验证你的新邮箱地址 %{unconfirmed_email}
-      enter_password: 输入密码
-      hide_email: 在公开的个人资料里面隐藏我的 Email
-      optional_twitter_username: Twitter 账号（可选）
-      title: 修改个人资料
+      title:
       api_access:
         confirm_reset: 确定要重置吗？此动作执行后将无法撤销
         credentials_html: 如果你希望在命令行中使用 %{gem_commands_link}，你需要一个 %{gem_credentials_file} 文件，可用下面的命令生成：
@@ -230,30 +299,38 @@ zh-CN:
         reset: 重置 API Key
         title: API 访问
       reset_password:
-        link_text: 这里找回密码
-        text_html: 需要一个新密码？没问题，访问 %{link}
         title: 重置密码
+      mfa:
+        multifactor_auth: 多重要素验证
+        disabled_html:
+        go_settings: 注册新装置
+        enabled_html:
+        update: 更新
+        level:
+          title: 多重验证等级
+          disabled: 停用
+          ui_only: 只有使用者介面
+          ui_and_api: 使用者介面与API
+          ui_and_gem_signin:
+  profiles:
+    edit:
+      change_avatar:
+      email_awaiting_confirmation: 请验证你的新邮箱地址 %{unconfirmed_email}
+      enter_password: 输入密码
+      hide_email: 在公开的个人资料里面隐藏我的 Email
+      optional_twitter_username: Twitter 账号（可选）
+      title: 修改个人资料
       delete:
         delete: 删除
         delete_profile: 删除个人资料
         warning: 警告
-      mfa:
-        multifactor_auth:
-        disabled:
-        go_settings:
-        enabled:
-        update:
-        level:
-          title:
-          disabled:
-          ui_only:
-          ui_and_api:
     delete:
       title:
       confirm:
       instructions:
       list_only_owner_html:
       list_multi_owner:
+      warning: 警告
     rubygem:
       owners_header:
     destroy:
@@ -283,25 +360,34 @@ zh-CN:
         mail: 邮件列表
         report_abuse: 举报投诉
         reverse_dependencies: 反向依赖
+        review_changes:
         rss: RSS
         subscribe: 订阅
         unsubscribe: 取消订阅
         wiki: Wiki
+        resend_ownership_confirmation:
+        ownership:
     blacklisted:
       blacklisted_namespace:
     dependencies:
       header: "%{title} 依赖关系"
     gem_members:
       authors_header: 作者
+      not_using_mfa_warning_show:
+      not_using_mfa_warning_hide:
+      self_no_mfa_warning_html:
       owners_header: 所有者
       pushed_by:
+      using_mfa_info:
       yanked_by:
       sha_256_checksum: SHA 256 checksum
     index:
       downloads: 下载
       title: Gems
     show:
-      licenses_header: 许可
+      licenses_header:
+        one: 许可
+        other: 许可
       no_licenses: 无
       requirements_header: 要求
       show_all_versions: 显示所有 (%{count} 个版本)
@@ -315,6 +401,7 @@ zh-CN:
   reverse_dependencies:
     index:
       title: "%{name} 的反向依赖"
+      subtitle:
     search:
       search_reverse_dependencies_html:
   searches:
@@ -329,12 +416,19 @@ zh-CN:
       month_update:
       week_update:
       filter:
+      yanked:
+      suggestion:
   sessions:
     new:
       forgot_password: 忘记了密码？
       resend_confirmation: 没有收到确认邮件？
+    verify:
+      title:
+      confirm:
+      notice:
   stats:
     index:
+      title:
       all_time_most_downloaded: 历史下载次数排行
       total_downloads: 下载总次数
       total_gems: Gems 总数
@@ -366,3 +460,28 @@ zh-CN:
         one: 显示 <b>1</b> %{model}
         other: 显示 <b>所有 %{count}</b> %{model}
         zero: 暂时没有 %{model}
+  owners:
+    confirm:
+      confirmed_email:
+      token_expired:
+    index:
+      add_owner:
+      name:
+      mfa:
+      status:
+      confirmed_at:
+      added_by:
+      action:
+      info:
+      email_field:
+      submit_button:
+      confirmed:
+      pending:
+      confirm_remove:
+    resend_confirmation:
+      resent_notice:
+    create:
+      success_notice:
+    destroy:
+      removed_notice:
+      failed_notice:

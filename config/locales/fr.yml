@@ -7,17 +7,18 @@ fr:
   footer_sponsors_html:
   footer_join_rt_html:
   form_disable_with: Veuillez patienter...
-  help_url: http://help.rubygems.org
   invalid_page:
   locale_name: Français
   none:
   not_found: Introuvable
+  api_key_forbidden:
   please_sign_up: Accès refusé. Inscrivez-vous sur https://rubygems.org
   please_sign_in:
   otp_incorrect:
   otp_missing:
   sign_in: Connexion
   sign_up: Inscription
+  dependency_list:
   multifactor_authentication: Authentification Multifacteur
   subtitle: votre communauté d'hébergement des gems
   this_rubygem_could_not_be_found: Rubygem introuvable.
@@ -26,6 +27,7 @@ fr:
   update: Mise à jour
   try_again: Une erreur est survenue. Veuillez réessayer.
   advanced_search: Recherche avancée
+  authenticate:
   activerecord:
     attributes:
       linkset:
@@ -35,6 +37,7 @@ fr:
         docs: URL de la documentation
         mail: URL de la liste de diffusion
         wiki: URL du wiki
+        funding:
       session:
         password: Mot de passe
         who: Email ou pseudonyme
@@ -46,6 +49,42 @@ fr:
     errors:
       messages:
         unpwn:
+        blocked:
+    models:
+      user:
+  api_keys:
+    create:
+      success:
+    destroy:
+      success:
+    index:
+      api_keys:
+      name:
+      scopes:
+      age:
+      last_access:
+      action:
+      delete:
+      confirm:
+      confirm_all:
+      new_key:
+      index_rubygems:
+      push_rubygem:
+      yank_rubygem:
+      add_owner:
+      remove_owner:
+      access_webhooks:
+      show_dashboard:
+      reset:
+      save_key:
+    new:
+      new_api_key:
+    reset:
+      success:
+    update:
+      success:
+    edit:
+      edit_api_key:
   clearance_mailer:
     change_password:
       title:
@@ -105,6 +144,7 @@ fr:
       header:
         dashboard: Dashboard
         edit_profile:
+        settings:
         search_gem_html: Recherche de Gems&hellip;
         sign_in: Connexion
         sign_out: Déconnexion
@@ -112,6 +152,7 @@ fr:
   mailer:
     confirm_your_email: Veuillez confirmer votre adresse email avec le lien qui vous a été envoyé par email.
     confirmation_subject: Veuillez confirmer votre adresse email pour RubyGems.org
+    link_expiration_explanation_html:
     email_confirmation:
       title:
       subtitle:
@@ -121,7 +162,6 @@ fr:
       title:
       subtitle:
       visit_link_instructions: Vous avez changé d'adresse email sur RubyGems.org. Veuillez suivre l'URL suivant pour réactiver votre compte.
-      link_expiration_explanation: Veuillez noter que ce lien n'est valide que pendant 3 heures.
     deletion_complete:
       title:
       subtitle:
@@ -136,9 +176,40 @@ fr:
       subject:
       title:
       subtitle:
+      'on':
+      off_html:
     gem_pushed:
       subject:
       title:
+    gem_yanked:
+      subject:
+      title:
+    reset_api_key:
+      subject:
+      title:
+      subtitle:
+    email_reset_update:
+      subject:
+      title:
+    ownership_confirmation:
+      subject:
+      title:
+      subtitle:
+      body_text:
+      body_html:
+      link_expiration_explanation_html:
+    owner_added:
+      subject_self:
+      subject_others:
+      title:
+      subtitle:
+      body_self_html:
+      body_others_html:
+    owner_removed:
+      subject:
+      title:
+      subtitle:
+      body_html:
   news:
     show:
       title: Nouvelles Versions - Toutes les Gems
@@ -177,9 +248,8 @@ fr:
       submit: Réinitialisez votre mot de passe
       title: Changement de mot de passe
       will_email_notice: Nous vous enverrons un email pour changer votre mot de passe.
-    otp_prompt:
-      authenticate:
   multifactor_auths:
+    recovery_code_html:
     incorrect_otp: Votre clé OTP est incorrecte.
     otp_code: clé OTP
     require_mfa_disabled: Votre authentification multifacteur a été activée. Vous devez d'abord la désactiver.
@@ -199,7 +269,9 @@ fr:
     recovery:
       continue: Continuer
       title: Codes de récupération
-      note: "Vous DEVEZ garder les codes de récupération en sécurité pour ne pas perdre votre compte. Chacun des codes peut être utilisé une fois si vous perdez votre authentificateur"
+      copy:
+      saved:
+      note_html:
     destroy:
       success: Vous avez désactivé l'authentification multifacteur.
     update:
@@ -209,19 +281,16 @@ fr:
       success:
     show:
       info:
-      on:
-      off:
+      'on':
+      'off':
       recommended:
       title:
       update:
-  profiles:
+      push_heading:
+      owner_heading:
+  settings:
     edit:
-      change_avatar:
-      email_awaiting_confirmation: Veuillez confirmer votre nouvelle adresse email %{unconfirmed_email}
-      enter_password: Veuillez entrer le mot de passe de votre compte
-      hide_email: Ne pas afficher l'email dans le profil public
-      optional_twitter_username: Nom d'utilisateur Twitter optionnel. Sera affiché publiquement
-      title: Modification de profil
+      title:
       api_access:
         confirm_reset: Êtes-vous sûr ? Cette action ne peut être annulée.
         credentials_html: 'Si vous voulez utiliser %{gem_commands_link} de la ligne de commande, vous aurez besoin d''un fichier %{gem_credentials_file}, que vous pouvez générer avec la commande suivante :'
@@ -230,30 +299,38 @@ fr:
         reset: Remise à zéro de votre clé API
         title: Accès API
       reset_password:
-        link_text: Demandez un nouveau mot de passe ici.
-        text_html: Besoin d'un nouveau mot de passe ? Pas de problème. %{link}
         title: Renvoi de mot de passe
-      delete:
-        delete: Supprimer
-        delete_profile: Supprimer le profil
-        warning: La suppression de votre profil est une action irréversible. Cela ne peut pas être annulé en contactant le support. Réfléchissez-bien avant de continuer !
       mfa:
         multifactor_auth: Authentification Multifacteur
-        disabled: Vous n'avez pas encore activé l'authentification multifacteur.
+        disabled_html:
         go_settings: Enregistrer un nouvel appareil
-        enabled: Vous avez activé l'authentification multifacteur. Veuillez entrer l'OTP de votre authentificateur ou un de vos codes de récupération pour le désactiver.
+        enabled_html:
         update:
         level:
           title:
           disabled:
           ui_only:
           ui_and_api:
+          ui_and_gem_signin:
+  profiles:
+    edit:
+      change_avatar:
+      email_awaiting_confirmation: Veuillez confirmer votre nouvelle adresse email %{unconfirmed_email}
+      enter_password: Veuillez entrer le mot de passe de votre compte
+      hide_email: Ne pas afficher l'email dans le profil public
+      optional_twitter_username: Nom d'utilisateur Twitter optionnel. Sera affiché publiquement
+      title: Modification de profil
+      delete:
+        delete: Supprimer
+        delete_profile: Supprimer le profil
+        warning: La suppression de votre profil est une action irréversible. Cela ne peut pas être annulé en contactant le support. Réfléchissez-bien avant de continuer !
     delete:
       title: Supprimer le profil
       confirm: Confirmer
       instructions: Nous sommes désolés de vous voir partir. Veuillez entrer votre mot de passe dans le champ et confirmer.
       list_only_owner_html: Ces gems seront effacées quand vous effacerez votre profil. Si vous désirez ajouter des propriétaires avant de supprimer votre profil, vous pouvez utiliser la commande %{command_link}.
       list_multi_owner: Vous allez perdre l'accès à ces gems mais d'autres propriétaires de ces gems y ont toujours accès.
+      warning: La suppression de votre profil est une action irréversible. Cela ne peut pas être annulé en contactant le support. Réfléchissez-bien avant de continuer !
     rubygem:
       owners_header: Propriétaires
     destroy:
@@ -283,25 +360,34 @@ fr:
         mail: Liste de diffusion
         report_abuse: Signaler un abus
         reverse_dependencies:
+        review_changes:
         rss: RSS
         subscribe: Abonnement
         unsubscribe: Désabonement
         wiki: Wiki
+        ownership:
+        resend_ownership_confirmation:
     blacklisted:
       blacklisted_namespace: Ce nom est réservé par rubygems.org.
     dependencies:
       header: Dépendances de %{title}
     gem_members:
       authors_header: Auteurs
+      not_using_mfa_warning_show:
+      not_using_mfa_warning_hide:
+      self_no_mfa_warning_html:
       owners_header: Propriétaires
       pushed_by:
+      using_mfa_info:
       yanked_by:
       sha_256_checksum: Total de contrôle SHA 256
     index:
       downloads: Téléchargements
       title: Gems
     show:
-      licenses_header: Licence
+      licenses_header:
+        one: License
+        other: Licenses
       no_licenses: aucune
       requirements_header: Dépendances
       show_all_versions: Voir toutes les versions (%{count})
@@ -315,6 +401,7 @@ fr:
   reverse_dependencies:
     index:
       title: "Dépendances inversées pour %{name}"
+      subtitle:
     search:
       search_reverse_dependencies_html: "Chercher des dépendances inversées Gems&hellip;"
   searches:
@@ -329,12 +416,19 @@ fr:
       month_update:
       week_update:
       filter:
+      yanked:
+      suggestion:
   sessions:
     new:
       forgot_password: Mot de passe oublié ?
       resend_confirmation: Vous n'avez pas reçu l'email de confirmation ?
+    verify:
+      title:
+      confirm:
+      notice:
   stats:
     index:
+      title:
       all_time_most_downloaded: Gems les plus téléchargés
       total_downloads: Total de téléchargements
       total_gems: Total de gems
@@ -366,3 +460,28 @@ fr:
         one: "<b>1</b> %{model} affiché"
         other: Les <b>%{count}</b> %{model} affichés
         zero: Aucun %{model} trouvé
+  owners:
+    confirm:
+      confirmed_email:
+      token_expired:
+    index:
+      add_owner:
+      name:
+      mfa:
+      status:
+      confirmed_at:
+      added_by:
+      action:
+      info:
+      email_field:
+      submit_button:
+      confirmed:
+      pending:
+      confirm_remove:
+    resend_confirmation:
+      resent_notice:
+    create:
+      success_notice:
+    destroy:
+      removed_notice:
+      failed_notice:

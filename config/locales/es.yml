@@ -9,23 +9,24 @@ es:
     <a href="%{contributing_docs}">Conviértete en colaborador</a> y mejora este sitio con tus cambios.
   footer_sponsors_html: RubyGems.org es posible gracias la colaboración de la fantástica comunidad de Ruby.
     <a href="https://www.fastly.com/">Fastly</a> provee ancho de banda y soporte de CDN
-    <a href="http://www.rubycentral.org/">Ruby Central</a> cubre los costos de infraestructura y
+    <a href="https://www.rubycentral.org/">Ruby Central</a> cubre los costos de infraestructura y
     <a href="https://rubytogether.org/?source=rubygems">Ruby Together</a> financia el desarrollo y el trabajo en los servidores.
     <a href="%{sponsors_page}">Aprende más sobre nuestros sponsors y cómo trabajan en conjunto</a>
   footer_join_rt_html: Necesitamos tu ayuda para financiar el tiempo de los desarrolladores que mantienen RubyGems.org funcionando correctamente para todo el mundo.
     <a href="https://rubytogether.org/join?source=rubygems">Únete a Ruby Together hoy</a>.
   form_disable_with: Un momento por favor...
-  help_url: http://help.rubygems.org
   invalid_page: Número de página inexistente. Redireccionando a la página por defecto.
   locale_name: Español
   none: Ninguno
   not_found: No encontrado
+  api_key_forbidden:
   please_sign_up: Acceso denegado. Por favor regístrate en https://rubygems.org
   please_sign_in: Por favor, ingresa en tu cuenta para continuar.
   otp_incorrect: Tu código OTP es incorrecto. Por favor verifícalo y prueba nuevamente.
   otp_missing: Activaste autenticación con múltiples factores, pero no suministraste un código OTP. Por favor ingrésalo y prueba nuevamente.
   sign_in: Ingresa
   sign_up: Regístrate
+  dependency_list:
   multifactor_authentication: Autenticación de múltiples factores
   subtitle: el alojamiento de gemas de tu comunidad
   this_rubygem_could_not_be_found: Esta gema no pudo encontrarse.
@@ -34,6 +35,7 @@ es:
   update: actualiza
   try_again: Algo salió mal. Por favor inténtalo nuevamente.
   advanced_search: Búsqueda avanzada
+  authenticate: Autenticar
   activerecord:
     attributes:
       linkset:
@@ -43,6 +45,7 @@ es:
         docs: URL de la documentación
         mail: URL de la lista de correo
         wiki: URL de la Wiki
+        funding:
       session:
         password: Contraseña
         who: Correo electrónico o usuario
@@ -54,6 +57,42 @@ es:
     errors:
       messages:
         unpwn:
+        blocked:
+    models:
+      user:
+  api_keys:
+    create:
+      success:
+    destroy:
+      success:
+    index:
+      api_keys:
+      name:
+      scopes:
+      age:
+      last_access:
+      action:
+      delete:
+      confirm:
+      confirm_all:
+      new_key:
+      index_rubygems:
+      push_rubygem:
+      yank_rubygem:
+      add_owner:
+      remove_owner:
+      access_webhooks:
+      show_dashboard:
+      reset:
+      save_key:
+    new:
+      new_api_key:
+    reset:
+      success:
+    update:
+      success:
+    edit:
+      edit_api_key:
   clearance_mailer:
     change_password:
       title: CAMBIAR CONTRASEÑA
@@ -113,6 +152,7 @@ es:
       header:
         dashboard: Dashboard
         edit_profile:
+        settings: Configuración
         search_gem_html: Buscar gemas&hellip;
         sign_in: Ingresar
         sign_out: Salir
@@ -120,6 +160,7 @@ es:
   mailer:
     confirm_your_email: Por favor confirma tu dirección de correo con el enlace enviado.
     confirmation_subject: Por favor confirma tu dirección de correo con RubyGems.org
+    link_expiration_explanation_html:
     email_confirmation:
       title: CONFIRMACIÓN DE EMAIL
       subtitle: ¡Último paso!
@@ -129,7 +170,6 @@ es:
       title: CAMBIO DE EMAIL
       subtitle: ¡Hola %{handle}!
       visit_link_instructions: Cambiaste tu dirección de correo en RubyGems.org. Por favor visita el siguiente enlace para re-activar tu cuenta.
-      link_expiration_explanation: Por favor ten en cuenta que el enlace tiene una validez de 3 horas.
     deletion_complete:
       title: ELIMINACIÓN COMPLETADA
       subtitle: ¡Adiós!
@@ -144,9 +184,40 @@ es:
       subject: Cambiaste la configuración de tus notificaciones por email de RubyGems.org
       title: NOTIFICACIONES POR EMAIL
       subtitle: ¡Hola %{handle}!
+      'on':
+      off_html:
     gem_pushed:
       subject: Gema %{gem} subida a RubyGems.org
       title: GEMA SUBIDA
+    gem_yanked:
+      subject:
+      title:
+    reset_api_key:
+      subject:
+      title:
+      subtitle:
+    email_reset_update:
+      subject:
+      title:
+    ownership_confirmation:
+      subject:
+      title:
+      subtitle:
+      body_text:
+      body_html:
+      link_expiration_explanation_html:
+    owner_added:
+      subject_self:
+      subject_others:
+      title:
+      subtitle:
+      body_self_html:
+      body_others_html:
+    owner_removed:
+      subject:
+      title:
+      subtitle:
+      body_html:
   news:
     show:
       title: Nuevos lanzamientos — Todas las Gemas
@@ -185,9 +256,8 @@ es:
       submit: Restablecer contraseña
       title: Cambiar tu contraseña
       will_email_notice: Te enviaremos el enlace para cambiar tu contraseña por correo electrónico.
-    otp_prompt:
-      authenticate: Autenticar
   multifactor_auths:
+    recovery_code_html:
     incorrect_otp: Tu código OTP no es correcto.
     otp_code: código OTP
     require_mfa_disabled: Se ha activado la autenticación de múltiples factores. Primero tienes que desactivarla.
@@ -207,7 +277,9 @@ es:
     recovery:
       continue: Continuar
       title: Códigos de recuperación
-      note: "DEBES mantener seguros los códigos de recuperación para prevenir la pérdida de tu cuenta. Cada código puede ser usado una vez si pierdes tu Autenticador."
+      copy:
+      saved:
+      note_html:
     destroy:
       success: Has desactivado exitosamente la autenticación de múltiples factores.
     update:
@@ -216,22 +288,17 @@ es:
     update:
       success: Has actualizado exitosamente la configuración de tus notificaciones por email.
     show:
-      info: Para facilitar la detección de cambios no autorizados en tus gemas, te enviamos un email
-        cada vez que una nueva versión es subida a RubyGems.org. Recibiendo y leyendo estos emails
-        ayudas a proteger el ecosistema de Ruby.
-      on: Activado
-      off: Desactivado
+      info:
+      'on': Activado
+      'off': Desactivado
       recommended: recomendado
       title: Notificación de email
       update: Actualizar
-  profiles:
+      push_heading:
+      owner_heading:
+  settings:
     edit:
-      change_avatar:
-      email_awaiting_confirmation: Por favor confirma tu nueva dirección de correo %{unconfirmed_email}
-      enter_password: Por favor introduce tu contraseña
-      hide_email: Ocultar correo electrónico en perfil público
-      optional_twitter_username: Usuario de Twitter opcional. Será mostrado en tu perfil público
-      title: Editar perfil
+      title: Editar configuración
       api_access:
         confirm_reset: '¿Seguro? Este cambio no puede deshacerse.'
         credentials_html: 'Si quieres usar %{gem_commands_link} desde la línea de comandos, vas a necesitar un archivo llamado %{gem_credentials_file}, el cual puedes generar usando el siguiente comando:'
@@ -240,30 +307,38 @@ es:
         reset: Reestablecer mi clave de API
         title: Acceso por API
       reset_password:
-        link_text: Solicitar aquí una nueva.
-        text_html: '¿Necesitas una nueva contraseña? Sin problemas. %{link}'
         title: Reestablecer contraseña
-      delete:
-        delete: Eliminar
-        delete_profile: Eliminar Perfil
-        warning: Eliminar tu perfil es una acción irreversible. No puede deshacerse contactando a soporte. ¡Por favor hazlo solo si estás seguro!
       mfa:
         multifactor_auth: Autenticación de múltiples factores
-        disabled: Todavía no activaste la Autenticación de Múltiples Factores.
+        disabled_html:
         go_settings: Registrar un nuevo dispositivo
-        enabled: Has activado la Autenticación de Múltiples Factores. Por favor ingresa el código OTP desde tu autenticador o alguna de tus claves de recuperación para cambiar tu nivel de Autenticación de Múltiples Factores para desactivarla.
+        enabled_html:
         update: Actualizar
         level:
           title: Nivel de Autenticación de Múltiples Factores
           disabled: Desactivada
           ui_only: Solo Interfaz de Usuario
           ui_and_api: Interfaz de Usuario y API
+          ui_and_gem_signin: Interfaz de Usario y gem signin
+  profiles:
+    edit:
+      change_avatar:
+      email_awaiting_confirmation: Por favor confirma tu nueva dirección de correo %{unconfirmed_email}
+      enter_password: Por favor introduce tu contraseña
+      hide_email: Ocultar correo electrónico en perfil público
+      optional_twitter_username: Usuario de Twitter opcional. Será mostrado en tu perfil público
+      title: Editar perfil
+      delete:
+        delete: Eliminar
+        delete_profile: Eliminar Perfil
+        warning: Eliminar tu perfil es una acción irreversible. No puede deshacerse contactando a soporte. ¡Por favor hazlo solo si estás seguro!
     delete:
       title: Eliminar perfil
       confirm: Confirmar
       instructions: Lamentamos ver que te vas. Ingresa tu contraseña abajo y confírmalo.
       list_only_owner_html: Estas gemas serán borradas cuando elimines tu cuenta. Si quieres agregar propietarios antes de eliminar tu cuenta, puedes usar el comando %{command_link}.
       list_multi_owner: Perderás acceso a estas gemas, pero otros propietarios podrán seguir accediendo a ellas.
+      warning: Eliminar tu perfil es una acción irreversible. No puede deshacerse contactando a soporte. ¡Por favor hazlo solo si estás seguro!
     rubygem:
       owners_header: Propietarios
     destroy:
@@ -293,38 +368,48 @@ es:
         mail: Lista de Correo
         report_abuse: Reportar abusos
         reverse_dependencies: Dependencias inversas
+        review_changes:
         rss: RSS
         subscribe: Suscribirse
         unsubscribe: Desuscribirse
         wiki: Wiki
+        ownership:
+        resend_ownership_confirmation:
     blacklisted:
       blacklisted_namespace: Este namespace está reservado por rubygems.org.
     dependencies:
       header: "dependencias de %{title}"
     gem_members:
       authors_header: Autores
+      self_no_mfa_warning_html:
+      not_using_mfa_warning_show: "* Algunos propietarios no están usando MFA. Haga click para ver la lista completa."
+      not_using_mfa_warning_hide: "* Los siguientes propietarios no están usando MFA. Haga click para ocultar."
       owners_header: Propietarios
       pushed_by: Subida por
+      using_mfa_info: "* Todos los propietarios están usando MFA."
       yanked_by: Borrada por
       sha_256_checksum: SHA 256 checksum
     index:
       downloads: Descargas
       title: Gemas
     show:
-      licenses_header: Licencia
+      licenses_header:
+        one: Licencia
+        other: Licencias
       no_licenses: N/A
       requirements_header: Requerimientos
       show_all_versions: Mostrar todas las versiones (%{count} total)
       versions_header: Versiones
       yanked_notice: Esta versión fue borrada, y no está disponible para su descarga directa ni por otras gemas que puedan haber dependido de la misma.
     show_yanked:
-      not_hosted_notice: Esta gema no está alojada actualmente en RubyGems.org.
+      not_hosted_notice: Esta gema no está alojada actualmente en RubyGems.org. Es posible que ya exista alguna versión borrada de esta gema.
       reserved_namespace_html:
         one: Esta gema existió previamente, pero fue eliminada por sus propietarios. El equipo de RubyGems.org ha reservado este nombre por un día más. Luego cualquiera podrá solicitar este nombre de gema usando `gem push`. <br/> Si eres el anterior propietario, puedes cambiar la propiedad de esta gema usando el comando `gem owner`. También puedes crear nuevas versiones de esta gema usando `gem push`.
         other: Esta gema existió previamente, pero fue eliminada por sus propietarios. El equipo de RubyGems.org ha reservado este nombre por %{count} días más. Luego cualquiera podrá solicitar este nombre de gema usando `gem push`. <br/> Si eres el anterior propietario, puedes cambiar la propiedad de esta gema usando el comando `gem owner`. También puedes crear nuevas versiones de esta gema usando `gem push`.
   reverse_dependencies:
     index:
       title: "Dependencias inversas para %{name}"
+      subtitle:
     search:
       search_reverse_dependencies_html: "Buscar dependencias inversas Gems&hellip;"
   searches:
@@ -339,12 +424,19 @@ es:
       month_update: Actualizadas en el último mes (%{count})
       week_update: Actualizadas en la última semana (%{count})
       filter: "Filtro:"
+      yanked:
+      suggestion:
   sessions:
     new:
       forgot_password: ¿Olvidaste tu contraseña?
       resend_confirmation: ¿No recibiste tu correo electrónico de confirmación?
+    verify:
+      title:
+      confirm:
+      notice:
   stats:
     index:
+      title:
       all_time_most_downloaded: Más descargadas
       total_downloads: Total de descargas
       total_gems: Gemas totales
@@ -376,3 +468,28 @@ es:
         one: Mostrando <b>1</b> %{model}
         other: Mostrando <b>todos los&nbsp;%{count}</b> %{model}
         zero: No se encontró ningún %{model}
+  owners:
+    confirm:
+      confirmed_email:
+      token_expired:
+    index:
+      add_owner:
+      name:
+      mfa:
+      status:
+      confirmed_at:
+      added_by:
+      action:
+      info:
+      email_field:
+      submit_button:
+      confirmed:
+      pending:
+      confirm_remove:
+    resend_confirmation:
+      resent_notice:
+    create:
+      success_notice:
+    destroy:
+      removed_notice:
+      failed_notice:

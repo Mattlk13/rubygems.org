@@ -3,9 +3,23 @@ require "test_helper"
 class DashboardTest < ActionDispatch::IntegrationTest
   setup do
     @user = create(:user, remember_token_expires_at: Gemcutter::REMEMBER_FOR.from_now)
-    cookies[:remember_token] = @user.remember_token
+    post session_path(session: { who: @user.handle, password: PasswordHelpers::SECURE_TEST_PASSWORD })
 
     create(:rubygem, name: "arrakis", number: "1.0.0")
+  end
+
+  test "request with array of api keys does not pass autorization" do
+    delete sign_out_path
+    create(:api_key, user: @user, key: "1234", show_dashboard: true)
+
+    rubygem = create(:rubygem, name: "sandworm", number: "1.0.0")
+    create(:subscription, rubygem: rubygem, user: @user)
+
+    get "/dashboard.atom?api_key=1234", as: :json
+    assert page.has_content? "sandworm"
+
+    get "/dashboard.atom?api_key[]=1234&api_key[]=key1", as: :json
+    refute page.has_content? "sandworm"
   end
 
   test "gems I have pushed show on my dashboard" do
@@ -40,13 +54,7 @@ class DashboardTest < ActionDispatch::IntegrationTest
 
     get dashboard_path(format: :atom)
     assert_response :success
-    assert_equal "application/atom+xml", response.content_type
+    assert_equal "application/atom+xml", response.media_type
     assert page.has_content? "sandworm"
-  end
-
-  test "shows announcements on dashboard" do
-    Announcement.create!(body: "hello w.")
-    get dashboard_path
-    assert page.has_content?("hello w.")
   end
 end

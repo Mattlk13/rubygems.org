@@ -4,7 +4,7 @@ class PasswordResetTest < SystemTest
   include ActiveJob::TestHelper
 
   def password_reset_link
-    body = ActionMailer::Base.deliveries.last.body.decoded.to_s
+    body = ActionMailer::Base.deliveries.last.parts[1].body.decoded.to_s
     link = %r{http://localhost/users([^";]*)}.match(body)
     link[0]
   end
@@ -70,10 +70,9 @@ class PasswordResetTest < SystemTest
     fill_in "Password", with: @user.password
     click_button "Sign in"
 
-    visit profile_path(@user)
-    click_link "Edit Profile"
+    visit edit_settings_path
 
-    click_link "Request a new one here."
+    click_link "Reset password"
 
     fill_in "Email address", with: @user.email
     perform_enqueued_jobs { click_button "Reset password" }
